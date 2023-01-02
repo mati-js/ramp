@@ -1,0 +1,27 @@
+.window {
+  width: 33%;
+}
+
+@media screen and (max-width: 1200px) {
+  .window {
+    width: 66%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .window {
+    width: 66%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .window {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .window {
+    width: 95%;
+  }
+}

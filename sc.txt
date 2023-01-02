@@ -1,0 +1,95 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.17;
+
+interface IPayments {
+  enum Status {
+    IN_PROGRESS,
+    APPROVED,
+    REJECTED
+  }
+
+  struct Payment {
+    string id;
+    Status status;
+    uint amount;
+    address coin;
+    address recipient;
+  }
+
+  function handlePayment(Payment memory payment) external returns (bool);
+}
+
+interface IERC20 {
+  function balanceOf(address account) external view returns (uint256);
+  function transferFrom(address from, address to,uint256 amount) external returns (bool);
+}
+
+contract Vault is IPayments {
+
+  event SendedFunds(address coin, address recipient, uint amount);
+
+  function getBalance(address coin, address who) public view returns (uint) {
+    if (coin == address(0))
+      return address(who).balance;
+    else return IERC20(coin).balanceOf(who);
+  }
+
+  function handlePayment(Payment memory payment) public /* only Ramp */ returns (bool) {
+    return sendFunds(payment.coin, payment.recipient, payment.amount);
+  }
+
+  function sendFunds(address coin, address recipient, uint amount) internal returns (bool success) {
+    if (coin == address(0)) {
+      (success, ) = payable(recipient).call{value: amount}('');
+    } else IERC20(coin).transferFrom(address(this), recipient, amount);
+  }
+
+}
+
+
+/**
+ * Ver un buen nombre para este contrato
+ */
+contract Ramp is IPayments {
+
+  uint paymentCounter;
+  mapping (uint => Payment) public payments;
+  mapping (string => bool) public usedIds;
+
+  IPayments vault;
+
+  constructor (address _vault) {
+    vault = IPayments(_vault);
+  }
+
+  event CreatedNewPayment(uint id);
+  event ChangedPaymentStatus(uint id, uint8 newStatus);
+
+  function createPayment(Payment memory newPayment) public /*onlyUs*/ returns (bool) {
+    // Validate amount, id and recipient
+    require((newPayment.amount > 0) && (newPayment.recipient != address(0)), 'Invalid params');
+    require(!usedIds[newPayment.id], 'Invalid id');
+
+    payments[paymentCounter] = newPayment;
+    usedIds[newPayment.id] = true;
+
+    emit CreatedNewPayment(paymentCounter);
+    paymentCounter++;
+    return true;
+  }
+
+  function handlePayment(Payment memory payment) public /*onlyUs*/ returns (bool result) {
+    result = vault.handlePayment(payment);
+    require(result);
+  }
+
+  function changePaymentStatus(uint paymentId, uint8 newStatus) public /*onlyUs*/ {
+    if (newStatus == uint8(Status.APPROVED)) {
+      this.handlePayment(payments[paymentId]);
+    }
+
+    payments[paymentId].status = Status(newStatus);
+    emit ChangedPaymentStatus(paymentId, newStatus);
+  }
+
+}
