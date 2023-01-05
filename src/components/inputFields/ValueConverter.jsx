@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import Web3 from 'web3';
 import '98.css';
 import './inputs.css';
 
 const units = [
   {
-    name: 'Ether',
+    name: 'ether',
     decimals: 1,
     divisible: true
   }, {
-    name: 'Wei',
+    name: 'wei',
     decimals: 18,
     divisible: false
   }, {
@@ -37,14 +38,23 @@ const ValueConverter = ({isCrypto=true, priceInDollars=1}) => {
   })
 
   const handleUnitChange = (event) => {
-    let newUnit = units.filter((unit) => {
-      return unit.name === event.target.value;
-    })[0];
-    
-    let finalValue = (inputValue / (10 ** selectedUnit.decimals)) * (10 ** newUnit.decimals)
+    try {
+      let newUnit = units.filter((unit) => {
+        return unit.name === event.target.value;
+      })[0];
+      
+      console.log(`Old unit: ${selectedUnit.name} --- New unit: ${newUnit.name}`);
+      console.log(`Value: ${inputValue}`);
 
-    setInputValue(finalValue.toString());
-    setSelectedUnit(newUnit);
+      let finalValue = Web3.utils.fromWei(Web3.utils.toWei(inputValue, selectedUnit.name), newUnit.name);
+  
+      setInputValue(finalValue.toString());
+      setSelectedUnit(newUnit);
+    } catch (error) {
+      // Show the error somewhere
+      console.log(error.message); 
+    }
+    
   }
 
   const handleTextChange = (event) => {
