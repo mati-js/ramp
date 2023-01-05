@@ -6,9 +6,8 @@ import "98.css";
   
 let amountOfCoins = 3;
 
-
 const WinContainer = () => {
-  let [activeButton, setActiveButton] = useState(0); // Impossible value
+  let [activeButton, setActiveButton] = useState(0);
 
   return (
     <div className="window">
