@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import CoinSelector from "../coinSelector/CoinSelector";
-import InputField from "../inputFields/InputFields";
+import InputFields from "../inputFields/InputFields";
 import './winContainer.css';
 import "98.css";
+  
+let amountOfCoins = 3;
+
 
 const WinContainer = () => {
+  let [activeButton, setActiveButton] = useState(0); // Impossible value
+
   return (
     <div className="window">
       <div className="title-bar">
@@ -16,8 +21,8 @@ const WinContainer = () => {
           </div>
         </div>
       <div className="window-body">
-        <CoinSelector />
-        <InputField />
+        <CoinSelector selectedCrypto={activeButton} setSelectedCrypto={setActiveButton} amountOfCoins={amountOfCoins} />
+        <InputFields selectedCrypto={activeButton} />
       </div>
     </div>
   );

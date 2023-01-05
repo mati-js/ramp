@@ -3,12 +3,12 @@ import AddressField from "./Address";
 import AmountField from "./Amount";
 import '98.css';
 
-const InputFields = () => {
+const InputFields = ({selectedCrypto=0}) => {
   return (
-    <div>
+    <div className='input-container'>
       <fieldset>
-        <legend>Type in the amount and the receiving address</legend>
-        <AmountField />
+        <legend>Select unit</legend>
+        <AmountField selectedCrypto={selectedCrypto} />
         {/*<AddressField />*/}
       </fieldset>
     </div>

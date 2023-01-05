@@ -1,22 +1,22 @@
 .available-coins { /* div */
   display: flex;
-  justify-content: center;
+  width: 100%;
+  margin: 1% 0% 0% 0%;
+  justify-content: space-between;
 }
 
 .selected-coin-button { /* boton seleccionado */
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
-  width: 33%;
+  width: 30%;
   height: 4rem;
-  margin: 1%;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
 }
 
 .coin-button { /* boton sin seleccionar */
-  width: 33%;
+  width: 30%;
   height: 4rem;
-  margin: 1%;
   background-repeat: no-repeat;
   background-position-x: center;
   background-position-y: center;
@@ -30,6 +30,7 @@
 
   .coin-button { /* boton sin seleccionar */
     width: 30%;
+    height: 4rem;
     margin: 1% 0% 1% 0%;
   }
 

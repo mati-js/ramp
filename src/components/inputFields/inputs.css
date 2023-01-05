@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.input-container {
+  margin: 2% 0% 0% 0%;
+}
+
 .unit-container {
   display: flex;
   flex-direction: column;
@@ -85,7 +89,6 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-  padding: 0;
 }
 
 /* Firefox */
