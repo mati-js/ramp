@@ -1,24 +1,27 @@
 import React from 'react';
+import Coins from '../shared/Coins';
 import './coinSelector.css';
- 
-let titles = [
-  'Ether on Ethereum Mainnet (chain id: 1)',          //
-  'MATIC on Polygon Mainnet (chain id: 137)',         // testnet: 80001
-  'BNB on Binance Smart Chain Mainnet (chain id: 56)' // testnet: 97
-]
+
 
 const CoinSelector = ({selectedCrypto, setSelectedCrypto, amountOfCoins}) => {
   
   const handleClick = (event) => {
-    // Set the active button
-    setSelectedCrypto(parseInt(event.target.id));
+    if (selectedCrypto.id !== parseInt(event.target.id)) {
+      let selectedCoin = Coins.filter((coin) => {
+        return coin.id === parseInt(event.target.id);
+      })[0];
+
+      // Set the active button
+      setSelectedCrypto(selectedCoin);
+    }
+
   }
   
   let coinList = (amount) => {
     let list = [];
     for (let i = 0; i < amount; i++) {
       let icon = require(`../../media/img/icons/${i}.png`);
-      list[i] = <button className={selectedCrypto === i ? 'selected-coin-button' : 'coin-button'} id={i} title={titles[i]} onClick={handleClick} key={i} style={{ 'backgroundImage': `url(${icon})` }}/>
+      list[i] = <button className={selectedCrypto.id === i ? 'selected-coin-button' : 'coin-button'} id={i} title={selectedCrypto.id === i ? selectedCrypto.name : ''} onClick={handleClick} key={i} style={{ 'backgroundImage': `url(${icon})` }}/>
     }
     return list;
   };

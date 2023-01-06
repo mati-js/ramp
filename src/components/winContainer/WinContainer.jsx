@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import CoinSelector from "../coinSelector/CoinSelector";
 import InputFields from "../inputFields/InputFields";
+import Coins from '../shared/Coins';
 import './winContainer.css';
 import "98.css";
-  
-let amountOfCoins = 3;
 
 const WinContainer = () => {
-  let [activeButton, setActiveButton] = useState(0);
+  let [activeCrypto, setActiveCrypto] = useState(Coins[0]);
 
   return (
     <div className="window">
@@ -20,8 +19,8 @@ const WinContainer = () => {
           </div>
         </div>
       <div className="window-body">
-        <CoinSelector selectedCrypto={activeButton} setSelectedCrypto={setActiveButton} amountOfCoins={amountOfCoins} />
-        <InputFields selectedCrypto={activeButton} />
+        <CoinSelector selectedCrypto={activeCrypto} setSelectedCrypto={setActiveCrypto} amountOfCoins={Coins.length} />
+        <InputFields selectedCrypto={activeCrypto} />
       </div>
     </div>
   );

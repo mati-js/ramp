@@ -33,10 +33,6 @@ const ValueConverter = ({selectedCoin='crypto', priceInDollars=1}) => {
     return names;
   }
 
-  useEffect(() => {
-    
-  })
-
   const handleUnitChange = (event) => {
     try {
       let newUnit = units.filter((unit) => {
@@ -69,7 +65,14 @@ const ValueConverter = ({selectedCoin='crypto', priceInDollars=1}) => {
           <select className='unit-selector' onChange={handleUnitChange}>
             {getUnits()}
           </select>
-          <label className='unit-help'></label>
+          <label className='unit-help'>
+            <div className='unit-help-text'>
+              <p>Units details:</p> 
+              <p>■ Ether: The biggest amount and can be divided.</p>
+              <p>■ Wei: The smallest amount and it cannot be divided.</p>
+              <p>■ Mwei: Most used for USDT, it haves 6 decimals and can be divided.</p>
+            </div>
+          </label>
         </div>
        : ''}
       

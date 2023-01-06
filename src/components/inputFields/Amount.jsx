@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ValueConverter from './ValueConverter';
 import './inputs.css';
 
-const AmountField = ({selectedCrypto=0}) => {
+const AmountField = ({selectedCrypto}) => {
   let [selectedButton, setSelectedButton] = useState('');
 
   const handleClick = (event) => {
@@ -12,7 +12,7 @@ const AmountField = ({selectedCrypto=0}) => {
   }
 
   const getBackgroundImage = () => {
-    let route = require(`../../media/img/icons/${selectedCrypto}.png`)
+    let route = require(`../../media/img/icons/${selectedCrypto.id}.png`)
     
     return {
       backgroundImage: `url(${route})`,
