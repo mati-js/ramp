@@ -1,16 +1,22 @@
 .window {
-  width: 33%;
+  width: 35%;
+}
+
+@media screen and (max-width: 1600px) {
+  .window {
+    width: 50%;
+  }
 }
 
 @media screen and (max-width: 1200px) {
   .window {
-    width: 66%;
+    width: 70%;
   }
 }
 
 @media screen and (max-width: 900px) {
   .window {
-    width: 66%;
+    width: 80%;
   }
 }
 
