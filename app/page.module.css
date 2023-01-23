@@ -1,0 +1,159 @@
+.main {
+  background-color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100vw;
+  justify-content: flex-start;
+}
+
+.container {
+  margin: 0% 3% 0% 3%;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--main-color);
+  width: 94%;
+  align-self: center;
+  align-items: center;
+  margin: 2% 3% 9% 3%;
+  height: 9%;
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-animation: scale-up-top 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+	        animation: scale-up-top 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+}
+
+.text {
+  color: var(--main-color);
+  white-space: nowrap;
+  font-size: 4rem;
+  margin-bottom: -5%;
+  font-weight: 800;
+  z-index: 10; /* Keeps the content on a single line */
+}
+
+.navButton {
+  margin: 0% 0.7% 0% 0.1%;
+  padding: 0% 2% 0% 2%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: none;
+  background-color: var(--main-color);
+  border-radius: 12px;
+  border: 2px solid var(--main-color);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  height: 100%;
+  width: 100%;
+}
+
+.navButton:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--main-color);
+  color: var(--main-color);
+}
+
+.label {
+  color: var(--main-color);
+}
+
+.icon {
+  margin: 0% 0% 0% 4%;
+}
+
+.labelContainer {
+  border: 1px solid var(--main-color);
+  border-radius: 13.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.brandName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 1%;
+  color: var(--secondary-color);
+}
+
+.navButtonContainer {
+  margin-left: 60%;
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  height: 90%;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  -webkit-animation: scale-up-hor-left 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+	        animation: scale-up-hor-left 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+}
+
+@-webkit-keyframes scale-up-hor-left {
+  0% {
+    -webkit-transform: scaleX(0.4);
+            transform: scaleX(0.4);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+}
+
+@keyframes scale-up-hor-left {
+  0% {
+    -webkit-transform: scaleX(0.4);
+            transform: scaleX(0.4);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+  }
+}
+
+@-webkit-keyframes scale-up-top {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+  }
+}
+
+@keyframes scale-up-top {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+  }
+}

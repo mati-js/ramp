@@ -1,29 +1,16 @@
-# README #
+# Market
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Este es uno de los módulos vitales de Beru. Implementa las funcionalidades {compra & venta} de NFTs utilizando moneda nativa o tokens ERC20 de la red en donde esté deployado.
 
-### What is this repository for? ###
+## Create offer
+Esta función se encarga de crear una oferta en Beru.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+### Requisitos
 
-### How do I get set up? ###
+- Ser usuario en el smart-contract "Roles" de Beru.
+- Ser dueño del/los NFT a publicar (o un operator).
+- Aprobar la dirección de este módulo como {operator} de los tokens a publicar. 
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+### 
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+## Deploy on Vercel
